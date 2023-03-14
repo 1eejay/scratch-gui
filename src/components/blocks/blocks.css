@@ -25,8 +25,8 @@
     bottom: 0;
     left: 0;
     border: 1px solid $ui-black-transparent;
-    border-top-right-radius: $space;
-    border-bottom-right-radius: $space;
+    border-radius: $space;
+    border-top-left-radius: 0;
 }
 
 [dir="rtl"] .blocks :global(.injectionDiv) {
@@ -44,7 +44,7 @@
     border-right: 1px solid $ui-black-transparent;
     border-bottom: 1px solid $ui-black-transparent;
     box-sizing: content-box;
-    height: calc(100% - 3.25rem) !important;
+    /* height: calc(100% - 3.25rem) !important; */
 
     /*
         For now, the layout cannot support scrollbars in the category menu.
