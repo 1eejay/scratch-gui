@@ -1,8 +1,60 @@
+/* eslint-disable max-len */
 import ScratchBlocks from 'scratch-blocks';
+
+import motionIcon from './assets/motion.svg';
+import looksIcon from './assets/looks.svg';
+import soundIcon from './assets/sound.svg';
+import eventsIcon from './assets/events.svg';
+import controlIcon from './assets/control.svg';
+import sensingIcon from './assets/sensing.svg';
+import operatorsIcon from './assets/operators.svg';
+import variablesIcon from './assets/variables.svg';
+import myBlockIcon from './assets/blocks.svg';
 
 const categorySeparator = '<sep gap="36"/>';
 
 const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
+
+const toolboxColors = {
+    motion: {
+        color: '#4C97FF',
+        border: '#3373CC',
+        icon: motionIcon
+    },
+    looks: {
+        color: '#9966FF',
+        border: '#3373CC',
+        icon: looksIcon
+    },
+    sound: {
+        color: '#D65CD6',
+        icon: soundIcon
+    },
+    events: {
+        color: '#FFD500',
+        icon: eventsIcon
+    },
+    control: {
+        color: '#FFAB19',
+        icon: controlIcon
+    },
+    sensing: {
+        color: '#4CBFE6',
+        icon: sensingIcon
+    },
+    operators: {
+        color: '#40BF4A',
+        icon: operatorsIcon
+    },
+    variables: {
+        color: '#FF8C1A',
+        icon: variablesIcon
+    },
+    myBlocks: {
+        color: '#FF6680',
+        icon: myBlockIcon
+    }
+};
 
 /* eslint-disable no-unused-vars */
 const motion = function (isInitialSetup, isStage, targetId) {
@@ -11,7 +63,7 @@ const motion = function (isInitialSetup, isStage, targetId) {
         'Stage selected: no motion blocks'
     );
     return `
-    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF" secondaryColour="#3373CC">
+    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="${toolboxColors.motion.color}" iconURI="${toolboxColors.motion.icon}" secondaryColour="${toolboxColors.motion.border}">
         ${isStage ? `
         <label text="${stageSelected}"></label>
         ` : `
@@ -155,7 +207,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
     const hello = ScratchBlocks.ScratchMsgs.translate('LOOKS_HELLO', 'Hello!');
     const hmm = ScratchBlocks.ScratchMsgs.translate('LOOKS_HMM', 'Hmm...');
     return `
-    <category name="%{BKY_CATEGORY_LOOKS}" id="looks" colour="#9966FF" secondaryColour="#774DCB">
+    <category name="%{BKY_CATEGORY_LOOKS}" id="looks" colour="${toolboxColors.looks.color}" iconURI="${toolboxColors.looks.icon}" secondaryColour="#774DCB">
         ${isStage ? '' : `
         <block type="looks_sayforsecs">
             <value name="MESSAGE">
@@ -290,7 +342,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
 
 const sound = function (isInitialSetup, isStage, targetId, soundName) {
     return `
-    <category name="%{BKY_CATEGORY_SOUND}" id="sound" colour="#D65CD6" secondaryColour="#BD42BD">
+    <category name="%{BKY_CATEGORY_SOUND}" id="sound" colour="${toolboxColors.sound.color}" iconURI="${toolboxColors.sound.icon}" secondaryColour="#BD42BD">
         <block id="${targetId}_sound_playuntildone" type="sound_playuntildone">
             <value name="SOUND_MENU">
                 <shadow type="sound_sounds_menu">
@@ -345,7 +397,7 @@ const sound = function (isInitialSetup, isStage, targetId, soundName) {
 
 const events = function (isInitialSetup, isStage) {
     return `
-    <category name="%{BKY_CATEGORY_EVENTS}" id="events" colour="#FFD500" secondaryColour="#CC9900">
+    <category name="%{BKY_CATEGORY_EVENTS}" id="events" colour="${toolboxColors.events.color}"  iconURI="${toolboxColors.events.icon}" secondaryColour="#CC9900">
         <block type="event_whenflagclicked"/>
         <block type="event_whenkeypressed">
         </block>
@@ -384,7 +436,7 @@ const events = function (isInitialSetup, isStage) {
 
 const control = function (isInitialSetup, isStage) {
     return `
-    <category name="%{BKY_CATEGORY_CONTROL}" id="control" colour="#FFAB19" secondaryColour="#CF8B17">
+    <category name="%{BKY_CATEGORY_CONTROL}" id="control" colour="${toolboxColors.control.color}" iconURI="${toolboxColors.control.icon}" secondaryColour="#CF8B17">
         <block type="control_wait">
             <value name="DURATION">
                 <shadow type="math_positive_number">
@@ -432,7 +484,7 @@ const control = function (isInitialSetup, isStage) {
 const sensing = function (isInitialSetup, isStage) {
     const name = ScratchBlocks.ScratchMsgs.translate('SENSING_ASK_TEXT', 'What\'s your name?');
     return `
-    <category name="%{BKY_CATEGORY_SENSING}" id="sensing" colour="#4CBFE6" secondaryColour="#2E8EB8">
+    <category name="%{BKY_CATEGORY_SENSING}" id="sensing" colour="${toolboxColors.sensing.color}" iconURI="${toolboxColors.sensing.icon}" secondaryColour="#2E8EB8">
         ${isStage ? '' : `
             <block type="sensing_touchingobject">
                 <value name="TOUCHINGOBJECTMENU">
@@ -509,7 +561,7 @@ const operators = function (isInitialSetup) {
     const banana = ScratchBlocks.ScratchMsgs.translate('OPERATORS_JOIN_BANANA', 'banana');
     const letter = ScratchBlocks.ScratchMsgs.translate('OPERATORS_LETTEROF_APPLE', 'a');
     return `
-    <category name="%{BKY_CATEGORY_OPERATORS}" id="operators" colour="#40BF4A" secondaryColour="#389438">
+    <category name="%{BKY_CATEGORY_OPERATORS}" id="operators" colour="${toolboxColors.operators.color}" iconURI="${toolboxColors.operators.icon}" secondaryColour="#389438">
         <block type="operator_add">
             <value name="NUM1">
                 <shadow type="math_number">
@@ -696,7 +748,8 @@ const variables = function () {
     <category
         name="%{BKY_CATEGORY_VARIABLES}"
         id="variables"
-        colour="#FF8C1A"
+        colour="${toolboxColors.variables.color}"
+        iconURI="${toolboxColors.variables.icon}"
         secondaryColour="#DB6E00"
         custom="VARIABLE">
     </category>
@@ -708,7 +761,8 @@ const myBlocks = function () {
     <category
         name="%{BKY_CATEGORY_MYBLOCKS}"
         id="myBlocks"
-        colour="#FF6680"
+        colour="${toolboxColors.myBlocks.color}"
+        iconURI="${toolboxColors.myBlocks.icon}"
         secondaryColour="#FF4D6A"
         custom="PROCEDURE">
     </category>

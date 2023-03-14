@@ -17,6 +17,9 @@
 
 .flex-wrapper {
     display: flex;
+    padding: $space;
+    padding-top: 0;
+    gap: $space;
 
     /*
         Make 2 columns:
@@ -205,8 +208,9 @@
     display: flex;
     flex-direction: column;
     /* pad entire wrapper to the left and right; allow children to fill width */
-    padding-left: $space;
-    padding-right: $space;
+    /* padding-left: $space;
+    padding-right: $space; */
+    gap: $space;
 
     /* this will only ever be as wide as the stage */
     flex-basis: 0;
@@ -217,7 +221,7 @@
     flex-grow: 1;
     flex-basis: 0;
 
-    padding-top: $space;
+    /* padding-top: $space; */
     min-height: 0; /* this makes it work in Firefox */
 
     /*
@@ -229,29 +233,34 @@
 }
 
 .extension-button-container {
-    width: 3.75rem;
-    height: 3.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: $z-index-extension-button;
+    bottom: 0.5rem;
+    left: 0.5rem;
     background: $motion-primary;
+    border-radius: 100%;
+    box-shadow: 0 0 0 4px $motion-transparent;
+    z-index: $z-index-extension-button;
 
     border: 1px solid $motion-primary;
     box-sizing: content-box; /* To match scratch-block vertical toolbox borders */
+}
+.extension-button-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 6px $motion-transparent;
 }
 
 $fade-out-distance: 15px;
 
 .extension-button-container:before {
     content: "";
-    position: absolute;
+    /* position: absolute;
     top: calc(calc(-1 * $fade-out-distance) - 1px);
     left: -1px;
     background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15));
     height: $fade-out-distance;
-    width: calc(100% + 0.5px);
+    width: calc(100% + 0.5px); */
 }
 
 
